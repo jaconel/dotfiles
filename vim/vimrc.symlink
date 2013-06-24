@@ -1,0 +1,35 @@
+set nocp
+syntax enable
+filetype plugin indent on
+
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+set ignorecase
+set smartcase
+set mouse=a
+set history=999999
+
+set incsearch
+set hlsearch
+set splitright
+set splitbelow
+set wrap
+noremap <Up> gk
+noremap <Down> gj
+
+set list listchars=tab:»-,trail:°
+set guioptions-=T
+set guioptions-=m
+set guioptions-=rL
+set wildmenu
+set diffopt=filler,vertical
+let g:netrw_liststyle=3
+
+set laststatus=2
+com! SL :set statusline=%#DiffText#%m%*%F%r%h%w%<\ ff=%{&ff}\ %y\ ascii=\%03b\ hex=\%02B\ %=(%l,%-4.(%c)%)\ %4.(%p%%%)\ %L
+SL
+
