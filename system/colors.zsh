@@ -64,14 +64,13 @@ On_ICyan="\[\033[0;106m\]"    # Cyan
 On_IWhite="\[\033[0;107m\]"   # White
 
 ### Add color to grep
-export GREP_COLOR=”1;4;32″
-alias grep=’egrep –color=auto’
+export GREP_COLOR="1;4;32"
 
 # Colorize less
-export LESS_TERMCAP_mb=$’\E[01;36m’
-export LESS_TERMCAP_md=$’\E[01;36m’
-export LESS_TERMCAP_me=$’\E[0m’
-export LESS_TERMCAP_se=$’\E[0m’
-export LESS_TERMCAP_so=$’\E[01;44;33m’
-export LESS_TERMCAP_ue=$’\E[0m’
-export LESS_TERMCAP_us=$’\E[04;32m’
+export LESS_TERMCAP_mb=$'\E[01;36m'
+export LESS_TERMCAP_md=$'\E[01;36m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[04;32m'
