@@ -2,13 +2,11 @@
 
 ## dotfiles
 
-Your dotfiles are how you personalize your system. These are mine.
+These are my dotfiles. The repository is a dumbed down version of Zack Holman's repository (found [here](https://github.com/holman/dotfiles).
 
-I was a little tired of having long alias files and everything strewn about
-(which is extremely common on other dotfiles projects, too). That led to this
-project being much more topic-centric. I realized I could split a lot of things
-up into the main areas I used (Ruby, git, system libraries, and so on), so I
-structured the project accordingly.
+I have adapted it to fit my needs and added a few changes to make it play nice with my linux installation.
+
+I maybe should have forked his repo, but thats to late now. :)
 
 ## install
 
@@ -33,13 +31,6 @@ forked dotfiles — say, "Java" — you can simply add a `java` directory and pu
 files in there. Anything with an extension of `.zsh` will get automatically
 included into your shell. Anything with an extension of `.symlink` will get
 symlinked without extension into `$HOME` when you run `script/bootstrap`.
-
-## what's inside
-
-A lot of stuff. Seriously, a lot of stuff. Check them out in the file browser
-above and see what components may mesh up with you.
-[Fork it](https://github.com/holman/dotfiles/fork), remove what you don't
-use, and build on what you do use.
 
 ## components
 
