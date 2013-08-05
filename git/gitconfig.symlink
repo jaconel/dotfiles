@@ -9,6 +9,7 @@
         rank-contributers = !$ZSH/bin/git-rank-contributers
         count   = !git shortlog -sn
         lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        lgm = log --oneline origin/master..HEAD
         latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
 [color]
         diff = auto

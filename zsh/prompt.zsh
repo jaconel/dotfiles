@@ -13,7 +13,7 @@ git_commit_count_master() {
     then
         echo ""
     else
-        echo $cc
+        echo " %{$fg_no_bold[magenta]%}[$cc]%{$reset_color%}"
     fi
 }
 
@@ -49,7 +49,7 @@ unpushed () {
 need_push () {
   if [[ $(unpushed) == "" ]]
   then
-    echo " "
+    echo ""
   else
     echo " (%{$fg_no_bold[magenta]%}x%{$reset_color%})"
   fi
