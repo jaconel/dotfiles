@@ -6,7 +6,7 @@ These are my dotfiles. The repository is a dumbed down version of Zack Holman's 
 
 I have adapted it to fit my needs and added a few changes to make it play nice with my linux installation.
 
-I maybe should have forked his repo, but thats to late now. :)
+Maybe should have forked his repo...oh well, to late now. :)
 
 ## install
 
