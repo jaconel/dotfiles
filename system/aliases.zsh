@@ -12,6 +12,7 @@ alias l="ls --color=auto -lAhtF"
 alias open="xdg-open"
 alias e='exit'
 alias s='sudo'
+alias c='clear'
 alias shutdown='sudo shutdown –h now'
 alias restart='sudo shutdown –r now'
 alias lock='gnome-screensaver-command --lock'

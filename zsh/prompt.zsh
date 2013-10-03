@@ -8,7 +8,7 @@ else
 fi
 
 git_commit_count_master() {
-    cc=$(git log --oneline origin/master..HEAD | wc -l)
+    cc=$(git log --oneline origin/master..HEAD 2>/dev/null | wc -l)
     if [[ $cc == 0 ]]
     then
         echo ""
