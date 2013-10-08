@@ -36,4 +36,7 @@ setopt HIST_REDUCE_BLANKS
 #   like: git comm-[tab]
 setopt complete_aliases
 
+# active commenting on the command line
+setopt interactivecomments
+
 zle -N newtab
