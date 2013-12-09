@@ -16,3 +16,8 @@ fi
 # sick of having to type ssh-add every time I log in
 # ==============================================================
 ssh-add > /dev/null 2>&1
+
+# ==============================================================
+# bind keys to page up and down
+# =============================================================
+#setkeycodes e033 104 && sudo setkeycodes e034 109
