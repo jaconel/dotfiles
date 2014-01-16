@@ -13,7 +13,7 @@ Maybe should have forked his repo...oh well, to late now. :)
 Run this:
 
 ```sh
-git clone https://github.com/holman/dotfiles.git ~/.dotfiles
+git clone https://github.com/jaconel/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 ```
