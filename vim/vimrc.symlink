@@ -34,4 +34,4 @@ set laststatus=2
 com! SL :set statusline=%#DiffText#%m%*%F%r%h%w%<\ ff=%{&ff}\ %y\ ascii=\%03b\ hex=\%02B\ %=(%l,%-4.(%c)%)\ %4.(%p%%%)\ %L
 SL
 
-colorscheme Mustang
+colorscheme mustang

@@ -26,6 +26,13 @@ fail () {
   exit
 }
 
+install_vim_theme () {
+  mkdir -p ~/.vim/colors
+  wget --quiet --output-document ~/.vim/colors/mustang.vim "http://goo.gl/lE2lTa"
+  success 'vim theme installed'
+
+}
+
 setup_gitconfig () {
   if ! [ -f git/gitconfig.symlink ]
   then
@@ -116,6 +123,7 @@ install_dotfiles () {
 
 setup_gitconfig
 install_dotfiles
+install_vim_theme
 
 echo ''
 echo '  All installed!'
