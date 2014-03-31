@@ -13,12 +13,16 @@ set smartindent
 set ignorecase
 set smartcase
 set history=999999
-
+set undolevels=1000
+set nobackup
+set noswapfile
 set incsearch
 set hlsearch
 set splitright
 set splitbelow
 set wrap
+set mouse=a
+set pastetoggle=<F2>
 noremap <Up> gk
 noremap <Down> gj
 
@@ -35,3 +39,6 @@ com! SL :set statusline=%#DiffText#%m%*%F%r%h%w%<\ ff=%{&ff}\ %y\ ascii=\%03b\ h
 SL
 
 colorscheme mustang
+
+execute pathogen#infect()
+execute pathogen#helptags()
