@@ -11,6 +11,11 @@
         lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         lgm = log --oneline origin/master..HEAD
         latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
+        push-origin = push origin HEAD
+        pull-origin = pull origin HEAD
+        pull-master = pull origin master
+        push-master = push origin HEAD:master
+        rara = !rara-something
 [color]
         diff = auto
         status = auto
