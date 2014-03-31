@@ -41,3 +41,4 @@ do
 done
 
 unset config_files
+alias today='date +"%Y%m%d"'
