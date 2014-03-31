@@ -26,6 +26,12 @@ fail () {
   exit
 }
 
+install_vim_pathogen() {
+  mkdir -p ~/.vim/autoload ~/.vim/bundle
+  curl -Sso ~/.vim/autoload/pathogen.vim "https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
+  success 'vim pathogent installed'
+}
+
 install_vim_theme () {
   mkdir -p ~/.vim/colors
   wget --quiet --output-document ~/.vim/colors/mustang.vim "http://goo.gl/lE2lTa"
@@ -124,6 +130,7 @@ install_dotfiles () {
 setup_gitconfig
 install_dotfiles
 install_vim_theme
+install_vim_pathogen
 
 echo ''
 echo '  All installed!'
