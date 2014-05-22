@@ -2,8 +2,9 @@ set nocp
 syntax enable
 filetype plugin indent on
 
-let &t_Co=256
-
+" Basic settigns to start off with
+set nocompatible
+set backspace=start,indent,eol
 set number
 set tabstop=4
 set shiftwidth=4
@@ -21,24 +22,37 @@ set hlsearch
 set splitright
 set splitbelow
 set wrap
-set mouse=a
-set pastetoggle=<F2>
-noremap <Up> gk
-noremap <Down> gj
-
-set list listchars=tab:»-,trail:°
+set list listchars=tab:»-,trail:° " shows tab-chars and traling white-spaces
 set guioptions-=T
 set guioptions-=m
 set guioptions-=rL
 set wildmenu
 set diffopt=filler,vertical
-let g:netrw_liststyle=3
 
+" Since I use a dark backgroun
+set background=dark
+
+" Inorder to allo me to easily paste without loosing format. <F2> gets me into
+" paste mode.
+set pastetoggle=<F2>
+
+" Leave Ex Mode, for good (http://www.bestofvim.com/tip/leave-ex-mode-good/)
+nnoremap Q <nop>
+
+" Use UNIX (\n) line endings for new files (be friendly to existing ones)
+au BufNewFile *.py,*.java,*.php, *.html set fileformat=unix
+
+" Enable spell checking for git commits.
+autocmd FileType gitcommit setlocal spell
+
+" Customize the status line
 set laststatus=2
 com! SL :set statusline=%#DiffText#%m%*%F%r%h%w%<\ ff=%{&ff}\ %y\ ascii=\%03b\ hex=\%02B\ %=(%l,%-4.(%c)%)\ %4.(%p%%%)\ %L
 SL
 
+" Set the colorscheme
 colorscheme mustang
 
+" Make Pathogen plugin work
 execute pathogen#infect()
 execute pathogen#helptags()
