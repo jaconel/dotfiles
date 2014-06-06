@@ -43,7 +43,7 @@ done
 unset config_files
 
 # add arcanist to the PATH
-if [-d "/opt/arcanist/bin"]; then
+if [ -d "/opt/arcanist/bin" ]; then
     PATH=$PATH:/opt/arcanist/bin/
 fi
 
