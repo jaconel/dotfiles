@@ -4,11 +4,14 @@
         email = jaco@takealot.com
 [alias]
         co = checkout
-        wtf     = !$ZSH/bin/git-wtf
-        count   = !git shortlog -sn
+        wtf = !$ZSH/bin/git-wtf
+        count = !git shortlog -sn
         lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         lgm = log --oneline origin/master..HEAD
         latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
+        track = !git-track
+        delete-local-merged = !git-delete-local-merged
+        up = !git-up
 [color]
         diff = auto
         status = auto
