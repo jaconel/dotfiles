@@ -15,3 +15,8 @@ alias gm="git merge"
 alias gl="git lg"
 alias gb="git branch"
 alias ga="git add"
+
+# ==============================================================
+# Arc aliases
+# ==============================================================
+alias arcd="git fetch origin && arc diff origin/master"
