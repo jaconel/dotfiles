@@ -12,7 +12,6 @@ set undolevels=500
 
 set splitright
 set splitbelow
-set list listchars=tab:»-,trail:° " shows tab-chars and traling white-spaces
 set guioptions-=T
 set guioptions-=m
 set guioptions-=rL
@@ -72,6 +71,25 @@ colorscheme mustang
 
 " install the patch font: https://github.com/scotu/ubuntu-mono-powerline
 let g:Powerline_symbols = "fancy"
+
+" Always show at least one line above/below the cursor.
+if !&scrolloff
+    set scrolloff=1
+endif
+if !&sidescrolloff
+    set sidescrolloff=5
+endif
+set display+=lastline
+
+" list trailing characters.
+if &listchars ==# 'eol:$'
+    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux'
+  set t_Co=16
+endif
 
 " Make Pathogen plugin work
 execute pathogen#infect()
