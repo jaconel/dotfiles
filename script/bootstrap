@@ -9,7 +9,7 @@ set -e
 echo ''
 
 info () {
-    printf "  [ \033[00;34m..\033[0m ] $1"
+  printf "\r  [ \033[00;34m..\033[0m ] $1"
 }
 
 user () {
@@ -28,22 +28,21 @@ fail () {
 
 install_vim_pathogen() {
   mkdir -p ~/.vim/autoload ~/.vim/bundle
-  curl -Sso ~/.vim/autoload/pathogen.vim "https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
-  success 'vim pathogent installed'
+   if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
+    wget -qO ~/.vim/autoload/pathogen.vim "https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
+  fi
+  success 'vim pathogen installed'
 }
 
 install_vim_theme () {
   mkdir -p ~/.vim/colors
   wget --quiet --output-document ~/.vim/colors/mustang.vim "http://goo.gl/lE2lTa"
   success 'vim theme installed'
-
 }
 
 install_vim_plugins () {
-
     while read plugin_git
     do
-
         IFS='|' read -ra details <<< "$plugin_git"
 
         name=${details[0]}
@@ -51,11 +50,26 @@ install_vim_plugins () {
         dest="$HOME/.vim/bundle/$name"
 
         if [ ! -d "$dest" ]; then
-            git clone $repo $dest
+            git clone --quiet $repo $dest
         fi
-        
-    done < $DOTFILES_ROOT/../vim/plugins
+        success "$name installed"
+
+    done < $DOTFILES_ROOT/vim/plugins
     success 'vim plugins installed'
+}
+
+install_patched_mono_font () {
+    if [ ! -d ~/.fonts/ubuntu-mono-powerline ]; then
+        git clone --quiet https://github.com/scotu/ubuntu-mono-powerline.git ~/.fonts/ubuntu-mono-powerline
+        success "patched mono font installed"
+    fi
+}
+
+ignore_ssh_authenticity () {
+    if [ ! -f ~/.ssh/config ]; then
+        touch ~/.ssh.config
+    fi
+    echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 }
 
 setup_gitconfig () {
@@ -149,8 +163,10 @@ install_dotfiles () {
 setup_gitconfig
 install_dotfiles
 install_vim_theme
+ignore_ssh_authenticity
 install_vim_pathogen
 install_vim_plugins
+install_patched_mono_font
 
 echo ''
 echo '  All installed!'
