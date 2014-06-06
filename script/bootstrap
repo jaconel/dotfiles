@@ -39,6 +39,25 @@ install_vim_theme () {
 
 }
 
+install_vim_plugins () {
+
+    while read plugin_git
+    do
+
+        IFS='|' read -ra details <<< "$plugin_git"
+
+        name=${details[0]}
+        repo=${details[1]}
+        dest="$HOME/.vim/bundle/$name"
+
+        if [ ! -d "$dest" ]; then
+            git clone $repo $dest
+        fi
+        
+    done < $DOTFILES_ROOT/../vim/plugins
+    success 'vim plugins installed'
+}
+
 setup_gitconfig () {
   if ! [ -f git/gitconfig.symlink ]
   then
@@ -131,6 +150,7 @@ setup_gitconfig
 install_dotfiles
 install_vim_theme
 install_vim_pathogen
+install_vim_plugins
 
 echo ''
 echo '  All installed!'
