@@ -91,6 +91,9 @@ if &t_Co == 8 && $TERM !~# '^linux'
   set t_Co=16
 endif
 
+" Always display the status line
+set laststatus=2
+
 " Make Pathogen plugin work
 execute pathogen#infect()
 execute pathogen#helptags()
