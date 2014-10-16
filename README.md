@@ -8,6 +8,16 @@ I have adapted it to fit my needs and added a few changes to make it play nice w
 
 Maybe should have forked his repo...oh well, to late now. :)
 
+## requirements
+
+Requires that git, vim and zsh is pre-installed on the server.
+
+To install zsh:
+```sh
+sudo apt-get update && sudo apt-get install zsh
+chsh -s /bin/zsh 
+```
+
 ## install
 
 Run this:
