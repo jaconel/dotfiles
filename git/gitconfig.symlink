@@ -1,7 +1,7 @@
 # Sample gitconfig
 [user]
         name = Jaco Nel
-        email = jaco@takealot.com
+        email = jaco.nel007@gmail.com
 [alias]
         co = checkout
         wtf = !$ZSH/bin/git-wtf
