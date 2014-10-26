@@ -40,3 +40,6 @@ setopt complete_aliases
 setopt interactivecomments
 
 zle -N newtab
+
+bindkey "[C" emacs-forward-word   #control left
+bindkey "[D" backward-word        #control right"]]"
