@@ -6,3 +6,4 @@ fugitive|git@github.com:tpope/vim-fugitive.git
 vim-powerline|git@github.com:Lokaltog/vim-powerline
 vim-surround|git@github.com:tpope/vim-surround.git
 vim-blade|git@github.com:xsbeats/vim-blade.git
+vim-actionscript|git@github.com:jeroenbourgois/vim-actionscript.git
