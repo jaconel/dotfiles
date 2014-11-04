@@ -7,3 +7,4 @@ vim-powerline|git@github.com:Lokaltog/vim-powerline
 vim-surround|git@github.com:tpope/vim-surround.git
 vim-blade|git@github.com:xsbeats/vim-blade.git
 vim-actionscript|git@github.com:jeroenbourgois/vim-actionscript.git
+vim-phpqa|git@github.com:joonty/vim-phpqa.git
