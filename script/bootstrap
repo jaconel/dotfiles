@@ -28,15 +28,19 @@ fail () {
 
 install_vim_pathogen() {
   mkdir -p ~/.vim/autoload ~/.vim/bundle
-   if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
+  if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
     wget -qO ~/.vim/autoload/pathogen.vim "https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
   fi
   success 'vim pathogen installed'
 }
 
 install_vim_theme () {
-  mkdir -p ~/.vim/colors
-  wget --quiet --output-document ~/.vim/colors/mustang.vim "http://goo.gl/lE2lTa"
+  if [ ! -d ~/.vim/colors ]; then
+    mkdir -p ~/.vim/colors
+  fi
+  if [ ! -f ~/.vim/colors/mustang.vim ]; then
+    wget -qO ~/.vim/colors/mustang.vim "http://goo.gl/lE2lTa"
+  fi
   success 'vim theme installed'
 }
 
@@ -71,7 +75,9 @@ ignore_ssh_authenticity () {
     if [ ! -f ~/.ssh/config ]; then
         touch ~/.ssh.config
     fi
-    echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+    if ! grep -Fxq "Host github.com" ~/.ssh/config; then
+        echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+    fi
 }
 
 setup_gitconfig () {
