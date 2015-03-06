@@ -24,4 +24,4 @@ alias untar-gz='tar -zxvf'
 # =============================================================
 # Colorful commands
 # =============================================================
-alias ls="ls --color=auto"
+#alias ls="ls --color=auto"

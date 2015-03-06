@@ -63,7 +63,7 @@ date_time_info(){
   echo "%{$fg_no_bold[cyan]%}%D %T%{$reset_color%}"
 }
 
-export PROMPT=$'$(directory_name)$(git_dirty)$(need_push)$(git_commit_count_master) › '
+export PROMPT=$'$(directory_name)$(git_dirty) › '
 set_prompt () {
   export RPROMPT=$'$(date_time_info)'
 }

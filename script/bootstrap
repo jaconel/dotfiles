@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+!/usr/bin/env bash
 #
-# bootstrap installs things.
+# bootstrap all the things!
 
 DOTFILES_ROOT="`pwd`"
 
@@ -59,9 +59,11 @@ install_vim_plugins () {
 }
 
 install_patched_mono_font () {
-    if [ ! -d ~/.fonts/ubuntu-mono-powerline ]; then
-        git clone --quiet https://github.com/scotu/ubuntu-mono-powerline.git ~/.fonts/ubuntu-mono-powerline
-        success "patched mono font installed"
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	    if [ ! -d ~/.fonts/ubuntu-mono-powerline ]; then
+		git clone --quiet https://github.com/scotu/ubuntu-mono-powerline.git ~/.fonts/ubuntu-mono-powerline
+		success "patched mono font installed"
+	    fi
     fi
 }
 
