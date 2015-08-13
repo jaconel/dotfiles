@@ -12,7 +12,7 @@ set -g default-terminal "screen-256color"
 # tabs
 #------------
 setw -g window-status-format "#[fg=white]#[bg=blue] #I #[bg=blue]#[fg=white] #W "
-setw -g window-status-current-format "#[bg=brightmagenta]#[fg=white] *#I #[fg=white,bold]#[bg=cyan] [#W] "
+setw -g window-status-current-format "#[bg=cyan]#[fg=white,bold] *#I #[fg=white,bold]#[bg=cyan] [#W] "
 setw -g window-status-content-attr bold,blink,reverse
 
 #------------
@@ -23,7 +23,7 @@ set -g status-fg white
 set -g status-bg colour25
 set -g status-left ''
 set -g status-right-length 60
-set -g status-right 'docker -> #(docker ps -q | wc -l):#(docker ps -a | wc -l)'
+#set -g status-right 'docker -> #(docker ps -q | wc -l):#(docker ps -a | wc -l)'
 
 # -----------------------
 # fix ctrl+arrow keys
@@ -38,32 +38,3 @@ setw -g mode-mouse off
 set-option -g mouse-resize-pane off
 set-option -g mouse-select-pane off
 set-option -g mouse-select-window off
-
-# toggle mouse mode to allow mouse copy/paste
-# set mouse on with prefix m
-bind m \
-    set -g mode-mouse on \;\
-    set -g mouse-resize-pane on \;\
-    set -g mouse-select-pane on \;\
-    set -g mouse-select-window on \;\
-    display 'Mouse: ON'
-
-# set mouse off with prefix M
-bind M \
-    set -g mode-mouse off \;\
-    set -g mouse-resize-pane off \;\
-    set -g mouse-select-pane off \;\
-    set -g mouse-select-window off \;\
-    display 'Mouse: OFF'
-
-# zoom this pane to full screen
-bind + \
-    new-window -d -n tmux-zoom 'clear && echo TMUX ZOOM && read' \;\
-    swap-pane -s tmux-zoom.0 \;\
-    select-window -t tmux-zoom
-
-# restore this pane
-bind - \
-    last-window \;\
-    swap-pane -s tmux-zoom.0 \;\
-    kill-window -t tmux-zoom

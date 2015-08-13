@@ -22,7 +22,7 @@ git_branch() {
 }
 
 git_dirty() {
-  st=$($git status 2>/dev/null | tail -n 1)
+  st=$($git status 2>/dev/null | sed '/^\s*$/d' | tail -n 1)
   if [[ $st == "" ]]
   then
     echo ""
@@ -65,7 +65,7 @@ date_time_info(){
 
 export PROMPT=$'$(directory_name)$(git_dirty) › '
 set_prompt () {
-  export RPROMPT=$'$(date_time_info)'
+  #export RPROMPT=$'$(date_time_info)'
 }
 
 precmd() {

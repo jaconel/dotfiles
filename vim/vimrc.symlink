@@ -35,7 +35,7 @@ set nowrap
 " Since I use a dark background
 set background=dark
 
-" Inorder to allo me to easily paste without loosing format. <F2> gets me into
+" Inorder to allow me to easily paste without loosing format. <F2> gets me into
 " paste mode.
 set pastetoggle=<F2>
 
@@ -54,12 +54,6 @@ au BufNewFile *.py,*.java,*.php, *.html set fileformat=unix
 
 " Enable spell checking for git commits.
 autocmd FileType gitcommit setlocal spell
-
-" Configure taglist (download link: http://vim.sourceforge.net/scripts/script.php?script_id=273). Also ensure that ctags is installed (sudo apt-get install exuberant-ctags) 
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
-" F4 toggles the tag list
-map <F4> :TlistToggle<cr>
 
 " Easier moving of code blocks. Vim will no longer loose selection when
 " indenting
@@ -103,15 +97,9 @@ endif
 " Always display the status line
 set laststatus=2
 
-" Don't run messdetector on save
- let g:phpqa_messdetector_autorun = 0
-
-" Don't run codesniffer on save 
-let g:phpqa_codesniffer_autorun = 0
-
-"" Show code coverage on load 
-let g:phpqa_codecoverage_autorun = 0
-
 " Make Pathogen plugin work
 execute pathogen#infect()
 execute pathogen#helptags()
+
+" map 't' to open NERDTree
+map t :NERDTree<CR>

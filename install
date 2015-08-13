@@ -8,10 +8,6 @@ set -e
 
 echo ''
 
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1"
-}
-
 user () {
   printf "\r  [ \033[0;33m?\033[0m ] $1 "
 }
@@ -66,8 +62,10 @@ install_patched_mono_font () {
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	    if [ ! -d ~/.fonts/ubuntu-mono-powerline ]; then
 		git clone --quiet https://github.com/scotu/ubuntu-mono-powerline.git ~/.fonts/ubuntu-mono-powerline
-		success "patched mono font installed"
+		success "patched mono font installed for use in vim powerline"
 	    fi
+    else
+        success "OSX does not yet support mono font for vim powerline"
     fi
 }
 
@@ -78,13 +76,12 @@ ignore_ssh_authenticity () {
     if ! grep -Fxq "Host github.com" ~/.ssh/config; then
         echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
     fi
+    success 'StrictHostKeyChecking disabled for github.com'
 }
 
 setup_gitconfig () {
   if ! [ -f git/gitconfig.symlink ]
   then
-    info 'setup gitconfig'
-
     user ' - What is your github author name?'
     read -e git_authorname
     user ' - What is your github author email?'
@@ -92,7 +89,7 @@ setup_gitconfig () {
 
     sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" git/gitconfig.symlink.example > git/gitconfig.symlink
 
-    success 'gitconfig'
+    success 'gitconfig installed'
   fi
 }
 
@@ -102,13 +99,11 @@ link_files () {
 }
 
 install_dotfiles () {
-  info 'installing dotfiles'
-
   overwrite_all=false
   backup_all=false
   skip_all=false
 
-  for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
+  for source in `find -L $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
   do
     dest="$HOME/.`basename \"${source%.*}\"`"
 
@@ -121,7 +116,7 @@ install_dotfiles () {
 
       if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
       then
-        user "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        user "Attempting to symlimk a file that already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
@@ -168,13 +163,13 @@ install_dotfiles () {
   done
 }
 
+ignore_ssh_authenticity
 setup_gitconfig
 install_dotfiles
-install_vim_theme
-ignore_ssh_authenticity
+install_patched_mono_font
 install_vim_pathogen
 install_vim_plugins
-install_patched_mono_font
+install_vim_theme
 
 echo ''
 echo '  All installed!'

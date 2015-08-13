@@ -42,13 +42,6 @@ done
 
 unset config_files
 
-# add arcanist to the PATH
-if [ -d "/opt/arcanist/bin" ]; then
-    PATH=$PATH:/opt/arcanist/bin/
-fi
-
-alias today='date +"%Y%m%d"'
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 if [ -f ~/.rvm/scripts/rvm ]; then
@@ -81,4 +74,9 @@ function color_maven() {
 
 }
 
-alias mvn=color_maven
+#alias mvn=color_maven
+
+# autocorrect is annoying the hell out of me, disable it now!
+DISABLE_CORRECTION="true"
+unsetopt correct
+unsetopt correct_all
