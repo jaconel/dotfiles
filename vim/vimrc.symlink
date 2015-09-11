@@ -64,7 +64,7 @@ vnoremap > >gv " better indenation
 colorscheme mustang
 
 " install the patch font: https://github.com/scotu/ubuntu-mono-powerline
-let g:Powerline_symbols = "fancy"
+" let g:Powerline_symbols = "fancy"
 
 " Always show at least one line above/below the cursor.
 if !&scrolloff

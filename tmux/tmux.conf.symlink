@@ -30,6 +30,12 @@ set -g status-right-length 60
 # -----------------------
 set -g xterm-keys on
 
+
+# ----------------------
+# Allow copying to global clipboard using 'y'
+# ----------------------
+bind -t vi-copy y copy-pipe 'pbcopy'
+
 # ----------------------
 # allow mouse
 # ----------------------
