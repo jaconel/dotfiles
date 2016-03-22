@@ -15,4 +15,4 @@ alias virt='virtualenv --no-site-packages --prompt=\(venv:$(pwd|sed "s/.*\///")\
 alias tar-gz='tar -zcvf'
 alias untar-gz='tar -zxvf'
 alias b2d='boot2docker'
-alias docker-rm-all="docker ps -a | grep 'Exited' | awk '{print $1}'"
+alias docker-rm-all="docker rm $(docker ps -a -q)"
