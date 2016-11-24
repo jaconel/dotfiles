@@ -46,3 +46,6 @@ unset config_files
 DISABLE_CORRECTION="true"
 unsetopt correct
 unsetopt correct_all
+
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
