@@ -1,7 +1,7 @@
 # ---------------------
 # ensure utf-8 support
 #----------------------
-set status-utf8 on
+set -g status-utf8 on
 
 # ----------------------------
 # ensure we support 256 color
@@ -13,7 +13,6 @@ set -g default-terminal "screen-256color"
 #------------
 setw -g window-status-format "#[fg=white]#[bg=blue] #I #[bg=blue]#[fg=white] #W "
 setw -g window-status-current-format "#[bg=cyan]#[fg=white,bold] *#I #[fg=white,bold]#[bg=cyan] [#W] "
-setw -g window-status-content-attr bold,blink,reverse
 
 #------------
 # status bar
@@ -29,7 +28,6 @@ set -g status-right-length 60
 # fix ctrl+arrow keys
 # -----------------------
 set -g xterm-keys on
-
 
 # ----------------------
 # Allow copying to global clipboard using 'y'
