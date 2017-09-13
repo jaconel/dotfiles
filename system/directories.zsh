@@ -4,6 +4,9 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
+alias cdc='cd ~/Code'
+alias cdi='cd ~/Code/iflix'
+
 alias ..='cd ..'
 alias cd..='cd ..'
 alias cd...='cd ../..'

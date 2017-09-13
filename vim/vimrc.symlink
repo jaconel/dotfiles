@@ -23,7 +23,7 @@ set smartcase
 set incsearch
 set hlsearch " hightlight search results
 
-" no backup or swap files. 
+" no backup or swap files.
 set nobackup
 set noswapfile
 set nowritebackup
@@ -103,3 +103,6 @@ execute pathogen#helptags()
 
 " map 't' to open NERDTree
 map t :NERDTree<CR>
+
+" share a clipboard with system
+set clipboard=unnamed

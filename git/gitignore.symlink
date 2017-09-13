@@ -5,3 +5,5 @@ nbproject/
 .DS_Store
 .tags
 .tags1
+.vscode
+.serverless

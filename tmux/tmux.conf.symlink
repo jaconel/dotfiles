@@ -1,44 +1,75 @@
-# ---------------------
-# ensure utf-8 support
-#----------------------
-set -g status-utf8 on
+# Override the leader/prefix key
+set-option -g prefix C-b
 
-# ----------------------------
 # ensure we support 256 color
-# ----------------------------
 set -g default-terminal "screen-256color"
 
-#------------
-# tabs
-#------------
+# Allows for faster key repetition
+set -s escape-time 0
+
+# tabs styling
 setw -g window-status-format "#[fg=white]#[bg=blue] #I #[bg=blue]#[fg=white] #W "
 setw -g window-status-current-format "#[bg=cyan]#[fg=white,bold] *#I #[fg=white,bold]#[bg=cyan] [#W] "
 
-#------------
-# status bar
-#------------
+# start numbering at 1
+set -g base-index 1
+setw -g pane-base-index 1
+
+# status bar styling and layout
 set -g status-position top
 set -g status-fg white
 set -g status-bg colour25
 set -g status-left ''
 set -g status-right-length 60
-#set -g status-right 'docker -> #(docker ps -q | wc -l):#(docker ps -a | wc -l)'
 
-# -----------------------
 # fix ctrl+arrow keys
-# -----------------------
 set -g xterm-keys on
 
-# ----------------------
-# Allow copying to global clipboard using 'y'
-# ----------------------
-bind -t vi-copy y copy-pipe 'pbcopy'
+# set vi mode for copy mode
+setw -g mode-keys vi
 
-# ----------------------
-# allow mouse
-# ----------------------
-# disable mouse control by default - change 'off' to 'on' to enable by default.
-setw -g mode-mouse off
-set-option -g mouse-resize-pane off
-set-option -g mouse-select-pane off
-set-option -g mouse-select-window off
+unbind [
+bind Escape copy-mode
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi y send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy" \; display-message "copied to system clipboard"
+
+# new window with default path set to last path
+bind '%' split-window -h -c "#{pane_current_path}"
+bind '|' split-window -h -c "#{pane_current_path}"
+bind '"' split-window -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+# create a new 'named' window
+bind-key C command-prompt -p "Name of new window: " "new-window -n '%%'"
+
+# auto window rename
+set-window-option -g automatic-rename
+
+# easier movement between panes
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# activity monitoring
+setw -g monitor-activity on
+set -g visual-activity on
+
+# mouse mode
+set -g mouse off
+bind m set -g mouse on \; display-message "mouse mode on"
+bind M set -g mouse off \; display-message "mouse mode off"
+
+# Rather than constraining window size to the maximum size of any client
+# connected to the *session*, constrain window size to the maximum size of any
+# client connected to *that window*. Much more reasonable.
+setw -g aggressive-resize on
+
+# use shift-arrow keys without prefix key to switch panes
+bind -n S-Left select-pane -L
+bind -n S-Right select-pane -R
+bind -n S-Up select-pane -U
+bind -n S-Down select-pane -D
+
+# reload config
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
